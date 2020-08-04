@@ -14,10 +14,13 @@
 	<!-- 引入babel，用于将jsx转为js -->
   <script type="text/javascript" src="../../js/babel.min.js"></script>
   <script type="text/babel">
-    // 创建组件->函数式
-    function Demo () {
-      console.log('@',this);
-      return <h1> 我是用函数定义的组件 </h1>
+    // 定义组件->类定义
+    class Demo extends React.Component{
+      // 定义一个生命周期钩子
+      render(){
+        console.log('@',this);
+        return<h1>我是用类定义的组件</h1>
+      }
     }
     // 渲染组件到页面
     ReactDOM.render(<Demo/>,document.getElementById('test'))
