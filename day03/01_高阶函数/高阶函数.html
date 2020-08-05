@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+	<!-- 引入react核心库 -->
+	<script type="text/javascript" src="../../js/react.development.js"></script>
+	<!-- 引入react-dom -->
+	<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+	<!-- 引入babel -->
+  <script type="text/javascript" src="../../js/babel.min.js"></script>
+  <script type="text/babel">
+    // 创建组件
+    class Login extends React.Component{
+      state = {
+        username: '',
+        pwd: '',
+      }
+      // 响应表单提交
+      handleSubmit = (event) => {
+        event.preventDefault()
+        const {username,pwd} = this.state
+        alert(`准备提交的用户名是${username},密码是${pwd}`)
+      }
+      saveFormData = (key) => {
+        return (event) => {
+          this.setState({[key]:event.target.value})
+        }
+      }
+      render() {
+        return(
+          <div>
+            <form action="http://www.baidu.com" onSubmit={this.handleSubmit}>
+              用户名：<input onChange={this.saveFormData('username')} placeholder="请输入用户名"/>
+              密码：<input onChange={this.saveFormData('pwd')} placeholder="请输入密码"/>
+              <button type="submit">登录</button>
+            </form>
+          </div>
+        )
+      }
+    }
+    // 渲染组件
+    ReactDOM.render(<Login/>,document.getElementById('test'))
+  </script>
+</body>
+</html>

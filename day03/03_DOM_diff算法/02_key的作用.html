@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+<!-- 引入react核心库 -->
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<!-- 引入react-dom -->
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<!-- 引入babel -->
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+  class List extends React.Component{
+    state = {
+      persons:[
+        {id:432215,name:'uzi',age:20},
+        {id:512351,name:'自豪',age:21},
+      ],
+      a:1
+    }
+    addWang = () => {
+      const wang = {id:Date.now(),name:'小王',age:14}
+      this.setState({persons:[wang,...this.state.persons]})
+    }
+    render(){
+      return(
+        <div>
+          <button onClick={this.addWang}>添加一个小王</button>
+          <h2>使用遍历时的index作为key</h2>
+          <ul>
+            {this.state.persons.map((person,index) => {
+              return <li key={index}>{person.name}--{person.age}<input/></li>
+            })}
+          </ul>
+          <hr/>
+          <h2>使用数据的唯一标识(id)作为标识</h2>
+          <ul>
+            {this.state.persons.map((person)=>{
+              return<li key={person.id}>{person.name}--{person.age}<input/></li>
+            })}
+          </ul>
+        </div>
+      )
+    }
+  }
+  // 渲染组件
+  ReactDOM.render(<List/>,document.getElementById('test'))
+</script>
+</body>
+</html>
