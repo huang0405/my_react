@@ -11,7 +11,19 @@
   <script type="text/javascript" src="../../js/react-dom.development.js"></script>
   <script type="text/javascript" src="../../js/babel.min.js"></script>
   <script type="text/babel">
-    
+    // 准备数据
+    const data = ['Angular','React','Vue']
+    // 创建虚拟DOM
+    const VDOM = 
+    <div>
+			<h1>前端框架列表</h1>
+			<ul>
+				{/*此处使用index可能会引发一些问题，但现在的业务逻辑场景是没问题的，后面仔细讲解key相关的问题*/}
+				{data.map((name,index)=><li key={index}>{name}</li>)}
+			</ul>
+		</div>
+    // 渲染虚拟DOM到页面
+    ReactDOM.render(VDOM,document.getElementById('test'))
   </script>
 </body>
 </html>
