@@ -18,10 +18,17 @@ export default class Search extends Component {
   handleSearch = () => {
     // 获取用户的输入
     const {keyWord} = this.state
+    const {updateAppState} = this.props
+    // 请求之前展示loading界面
+    updateAppState({isLoading:true,isFirst:false})
     // 发起请求
     axios.get(`api/search/users?q=${keyWord}`).then(
-      response => {console.log('请求成功',response)},
-      error => {console.log('请求失败',error);}
+      response => {
+        updateAppState({users:response.data.items,isLoading:false})
+      },
+      error => {
+        updateAppState({error:error.message,isLoading:false})
+      }
     )
   }
 
