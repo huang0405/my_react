@@ -12,6 +12,7 @@ module.exports = {
 	output:{
 		path:resolve(__dirname, "dist"),
 		filename: "index.js", 
+		publicPath: '/'
 	},
 
 	//工作模式
