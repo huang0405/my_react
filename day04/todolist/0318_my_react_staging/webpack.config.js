@@ -33,6 +33,7 @@ module.exports = {
 							'@babel/preset-react' //jsx===>js
 						],
 						plugins:[
+							['@babel/plugin-proposal-decorators',{legacy: true}],
 							// 让babel认识类中的新写法
 							'@babel/plugin-proposal-class-properties'
 						]
@@ -98,6 +99,7 @@ module.exports = {
 					changeOrigin: true, // 支持跨域, 如果协议/主机也不相同, 必须加上
 			}
 		},
+		historyApiFallback: true, // 任意的404响应都被代替为index.html备胎
 	},
 
 	//配置省略后缀
@@ -106,6 +108,5 @@ module.exports = {
     alias:{//配置短路径
       '@':resolve(__dirname, 'src')//取别名，让@代替根路径下的src，即：'/src'
     }
-	}
-	
+	}	
 }

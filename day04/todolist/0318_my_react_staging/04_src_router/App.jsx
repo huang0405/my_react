@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
+import React,{Component} from 'react'
 import About from './pages/About'
-import Home from './pages/Home'
 import Demo from './pages/Demo'
+import Home from './pages/Home'
 import {NavLink,Route,Switch,Redirect} from 'react-router-dom'
 import MyNavLink from './components/MyNavLink'
 import Title from './components/Title'
-import './decorator'
+import './decorator' // 引入装饰器
 import './App.css'
 
-export default class componentName extends Component {
-  render() {
+export default class App extends Component {
+  render () {
     return (
       <div>
         <div className="row">
 					<div className="col-xs-offset-2 col-xs-8">
-						<Title/>
+						<Title />
 					</div>
 				</div>
-				<div className="row">
+        <div className="row">
 					<div className="col-xs-2 col-xs-offset-2">
 						<div className="list-group">
 
@@ -36,8 +36,8 @@ export default class componentName extends Component {
 								{/* 注册路由 */}
 								<Switch>
 									<Route path="/about" exact component={About}/>
-									<Route path="/about/student"  component={Demo}/>
-									<Route path="/home"  component={Home}/>
+									<Route path="/about/student" component={Demo}/>
+									<Route path="/home" component={Home}/>
 									<Redirect to="/about"/>
 								</Switch>
 							</div>
